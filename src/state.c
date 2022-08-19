@@ -40,7 +40,6 @@ int isExitState(state_t cur) { return cur == ('a' + STATES - 1); }
 state_t init() { return 'a'; }
 
 state_t compute_state(int client, state_t s, message_t m) {
-  
   for (int i = 0; i < m.len; i++) {
     char c = m.actions[i];
     state_t prev = s;
