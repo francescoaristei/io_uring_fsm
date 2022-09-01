@@ -21,17 +21,26 @@ int main(int argc, char **argv)
 {
     int socket_desc , new_socket , c , *new_sock, i;
 
+    // number of clients
     char *char_clients = argv[1];
     int clients = atoi(char_clients);
+
+    // time window to send requests
     char *char_time = argv[2];
     int time = atoi(char_time);
 
     struct arg_struct args;
+
+    // requests
     args.req = 0;
+
+    // responses
     args.rec = 0;
     args.time = time;
 
     pthread_t sniffer_thread;
+
+    // create 'clients' thread as clients
     for (i = 1; i <= clients; i++) {
         if( pthread_create( &sniffer_thread , NULL ,  connection_handler , (void*)&args) < 0)
         {
@@ -40,6 +49,8 @@ int main(int argc, char **argv)
         }
     }
 
+
+    // necessary to sleep to let threads complete
     sleep(time);
 
     printf("Benchmarking: localhost 9090");
@@ -66,6 +77,8 @@ int main(int argc, char **argv)
 void *connection_handler(void *arguments)
 {
     int sock_desc;
+
+    // define server socket
     struct sockaddr_in serv_addr;
     struct arg_struct *args = (struct arg_struct *)arguments;
 
@@ -88,6 +101,7 @@ void *connection_handler(void *arguments)
     endwait = start + seconds;
     while(start < endwait)
     {
+        // send always action 1 to never have 'peer done'
         char sbuff[1] = "1";
         char rbuff[1];
         send(sock_desc,sbuff, 1,0);
@@ -98,9 +112,7 @@ void *connection_handler(void *arguments)
           fputs(rbuff,stdout);
           args->rec += 1;
 
-
         bzero(rbuff,MAX_SIZE);
-        //sleep(1);
         start = time(NULL);
     }
     close(sock_desc);

@@ -40,15 +40,15 @@ uint8_t bufs[MAX_CONNECTIONS][MAX_MESSAGE_LEN];
 
 typedef struct {
     state_t state;
-    int curfd; // current file descriptor (client socket)
+    int curfd;
     int num;
 } client_state_t;
 
-client_state_t clients[MAX_CONNECTIONS]; // array of clients
+client_state_t clients[MAX_CONNECTIONS];
 
 void initClients() {
   for (int i = 0; i < MAX_CONNECTIONS; i++) {
-    clients[i].state = init(); // it returns the initial state 'a'
+    clients[i].state = init();
     clients[i].curfd = 0;
     clients[i].num = i;
   }
@@ -62,11 +62,10 @@ void addClient(curfd) {
             return;
         }        
     }
-    perror_die("Sorry, maximum number of clients reached"); // utility function in files utils.c						                            // used to terminate the program
+    perror_die("Sorry, maximum number of clients reached");
 }
 
-client_state_t *findClient(int fd) { // return pointer to the memory location of the client
-				                    // else return null
+client_state_t *findClient(int fd) { 
   for (int i = 0; i < MAX_CONNECTIONS; i++) {
     if (clients[i].curfd == fd)
       return &clients[i];

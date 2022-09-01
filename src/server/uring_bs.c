@@ -36,15 +36,15 @@ typedef struct conn_info {
 
 typedef struct {
     state_t state;
-    int curfd; // current file descriptor (client socket)
+    int curfd;
     int num;
 } client_state_t;
 
-client_state_t clients[MAX_CONNECTIONS]; // array of clients
+client_state_t clients[MAX_CONNECTIONS];
 
 void initClients() {
   for (int i = 0; i < MAX_CONNECTIONS; i++) {
-    clients[i].state = init(); // it returns the initial state 'a'
+    clients[i].state = init();
     clients[i].curfd = 0;
     clients[i].num = i;
   }
@@ -58,11 +58,11 @@ void addClient(curfd) {
             return;
         }        
     }
-    perror_die("Sorry, maximum number of clients reached"); // utility function in files utils.c						                            // used to terminate the program
+    perror_die("Sorry, maximum number of clients reached");
+                                                          
 }
 
-client_state_t *findClient(int fd) { // return pointer to the memory location of the client
-				                    // else return null
+client_state_t *findClient(int fd) { 
   for (int i = 0; i < MAX_CONNECTIONS; i++) {
     if (clients[i].curfd == fd)
       return &clients[i];
@@ -100,7 +100,7 @@ int main(int argc, char *argv[]) {
     struct io_uring_probe *probe; 
     probe = io_uring_get_probe_ring(&ring); // function that allow to check for supported operations and capabilities
 
-    // to determine of an io_uring operation is supported by your kernel. 
+    // to determine if an io_uring operation is supported by your kernel. 
     // Returns 0 if the operation is not supported and a non-zero value if support is present
     if (!probe || !io_uring_opcode_supported(probe, IORING_OP_PROVIDE_BUFFERS)) {
         printf("Buffer select not supported, skipping...\n");
@@ -238,7 +238,6 @@ void add_socket_update(struct io_uring *ring, int fd, __u16 bid, int message_siz
           printf("peer done");
           sendDone(findClient(fd)->curfd);
     }
-
 
     conn_info conn_i = {
         .fd = fd,
