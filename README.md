@@ -9,7 +9,7 @@ The module is the final result of **Advanced Operating Systems** course held in 
 Specifically, it consists in developing the FSM server implemented in the [aos_playground repository](https://github.com/vzaccaria/aos-playground/tree/master/code/th-c-async), using the `io_uring interface`.
 The performances of the server are then evaluated against the other concurrency models already provided.
 
-## FSM
+## fsm
 
 The finite state machine implemented by the server is a simple one. 
 One state machine is dynamically created for each client.
@@ -18,7 +18,7 @@ Each client can send an action represented by a char (0 .. 3) to change a client
 This structure allows to model several interactions. 
 Any web application parses actions from the client to change its own state.
 
-## IO_URING
+## io_uring
 
 `io_uring` is a **Linux kernel** interface to efficiently allow to send and receive data asynchronously. 
 It was originally designed to target block devices and files but has since gained the ability to work with things like network sockets, like in our case.
