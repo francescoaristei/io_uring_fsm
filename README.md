@@ -37,9 +37,9 @@ Even though the purpose of the project is to implement the server only using the
 #### Simple Usage
 
 To play with the servers implemented, first is necessary to open a terminal.
-From here, starting from the `root` directory of the project, is required to move inside the `src/server` dir.
+From here, starting from the root directory of the project, is required to move inside the `src/server` dir.
 Here are located the files containing the code of the different servers.
-Now, to run a specific implementation of the finite state machine, execute the following instructions contained in the `makefile`.
+Now, to run a specific implementation of the finite state machine, execute the following instructions contained in the makefile.
 
 - `make utils.o` to generate the object file from the utils.c
 - `make state.o` to generate the object file from the state.c
