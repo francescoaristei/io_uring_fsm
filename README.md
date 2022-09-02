@@ -61,7 +61,7 @@ Starting from the root directory of the project, open a terminal, and produce th
 
 - `gcc benchmark.c -o benchmark`
 
-Then, run the server you want to benchmark, using the steps described in the **simple usage** paragraph.
+Then, run the server you want to evaluate, using the steps described in the **simple usage** paragraph.
 Finally, test the server, executing the benchmark with the following command:
 
 - `./benchmark <number_of_clients> <duration_of_the_interaction_in_seconds>`
