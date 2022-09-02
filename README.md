@@ -46,8 +46,8 @@ Now, to run a specific implementation of the finite state machine, execute the f
 - `make <name_of_the _server>` to obtain the executable of the server
 
 After that, the server is run with the command `./<name_of_executable>`.
-Now the server will be listening on the localhost, on the port 9090.
-To interact with it, open a second terminal and connect to the server using for example the telnet protocol, with the following command:
+Now, it will be listening on the localhost, on port 9090.
+To interact with it, open a second terminal and connect to the fsm using for example the telnet protocol, with the following command:
 - `telnet localhost 9090`
 
 From now on, this terminal can be used to send messages to the server and read in the stdout the corresponding state of the machine changing, accordingly to the action requested.
