@@ -28,8 +28,7 @@ There is a thorough high-level description of the code.
 
 ## Usage
 
-Even though the purpose of the project is to implement the server only using the io_uring interface, all the servers already present in the aos_playground repository, have
-been used in this repository, in order to implement the performance benchmarking.
+Even though the purpose of the project is to implement the server only using the io_uring interface, all the servers already present in the aos_playground repository, have been used in this repository, in order to implement the performance benchmarking.
 
 
 ### Simple Usage
@@ -72,6 +71,9 @@ Given that io_uring is a pretty new interface, the module has been developed in 
 Kernel version: v5.15.
 
 ## Tools & Reference Material
+
+- [Efficient IO with io_uring](https://kernel.dk/io_uring.pdf) - The main reference article where the io_uring technology is explained.  
+- [Lord of the io_uring](https://unixism.net/loti/) - A very useful blog describing the io_uring technology with lots of tutorial and practical examples. A very detailed explanation of the liburing API is also provided.
 
 
 
