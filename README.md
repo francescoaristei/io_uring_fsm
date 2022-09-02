@@ -13,9 +13,9 @@ The performances of the server are then evaluated against the other concurrency 
 
 The finite state machine implemented by the server is a simple one. 
 One state machine is dynamically created for each client.
-Each client can send an action char (0 .. 3) to change a client-specific state
+Each client can send an action represented by a char (0 .. 3) to change a client-specific state
 (a ... d) in the server.
-This model allows to model several interactions. 
+This structure allows to model several interactions. 
 Any web application parses actions from the client to change its own state.
 
 ## IO_URING
