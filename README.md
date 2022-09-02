@@ -51,6 +51,7 @@ To interact with it, open a second terminal and connect to the fsm using for exa
 - `telnet localhost 9090`
 
 From now on, this terminal can be used to send messages to the server and read in the stdout the corresponding state of the machine changing, accordingly to the action requested.
+Finally, execute the `make clean` command to remove the files created above.
 
 #### Testing the models
 
