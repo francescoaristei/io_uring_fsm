@@ -1,6 +1,6 @@
 # Finite State Machine using the Linux kernel interface IO_URING
 
-The module is the final result of **Advanced Operating Systems course held in the Master's Degree in Computer Science & Engineering at Politecnico di Milano**, Italy.
+The module is the final result of **Advanced Operating Systems** course held in the **Master's Degree in Computer Science & Engineering at Politecnico di Milano**, Italy.
 
 - Project supervisor: Vittorio Zaccaria
 - Course head professor: Vittorio Zaccaria
