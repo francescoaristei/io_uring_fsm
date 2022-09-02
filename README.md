@@ -30,11 +30,11 @@ The .tex file is the LaTeX documentation, which can be compiled on a local machi
 The pdf file is the already compiled LaTeX document.
 There is a thorough high-level description of the code.
 
-## Usage
+### Usage
 
 Even though the purpose of the project is to implement the server only using the io_uring interface, all the servers already present in the [aos_playground repository](https://github.com/vzaccaria/aos-playground/tree/master/code/th-c-async), have been used in this repository, in order to implement the performance benchmarking.
 
-### Simple Usage
+#### Simple Usage
 
 To play with the servers implemented, first is necessary to open a terminal.
 From here, starting from the `root` directory of the project, is required to move inside the `src/server` dir.
@@ -52,7 +52,7 @@ To interact with it, open a second terminal and connect to the server using for 
 
 From now on, this terminal can be used to send messages to the server and read in the stdout the corresponding state of the machine changing, accordingly to the action requested.
 
-### Testing the models
+#### Testing the models
 
 Part of the project is to evaluate the goodness of one concurrency model against the other.
 In order to do so, a simple benchmark application has been written.
