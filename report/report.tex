@@ -1,22 +1,3 @@
-\documentclass[10pt, oneside,english]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
-\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
-\geometry{a4paper}                   		% ... or a4paper or a5paper or ... 
-\usepackage[english]{babel}
-\selectlanguage{english}
-\usepackage[utf8]{inputenc}
-\usepackage[font=small,hang]{caption}
-\usepackage{hyperref}
-\usepackage{adjustbox}
-\usepackage[table,xcdraw]{xcolor}
-%\geometry{landscape}                		% Activate for rotated page geometry
-%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
-\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
-								% TeX will automatically convert eps --> pdf in pdflatex		
-\usepackage{amssymb}
-\usepackage{authblk}
-\usepackage{float}
-
-\usepackage{listings} % for python code
 
 \usepackage{tcolorbox}
 \tcbuselibrary{minted,breakable,xparse,skins}
@@ -304,7 +285,7 @@ Often after having submitted requests in the submission ring i expected to recei
 
 \begin{itemize}
     \item In the \textbf{add\_socket\_update} in order to update the state of the client the \textbf{message\_t} struct needs to be filled with the content of the client action, which is then passed in the \textbf{compute\_state} to update the state. \\I had several problems figuring out the correct way to copy the content in the buffer where io\_uring put the data (buf[bid]) in the \textbf{msg.actions} array.\\ I tried several options but i ended up always with segmentation fault. A simple \textbf{memcpy} solved the problem.
-    \item The \textbf{state.c} file contains the \textbf{compute\_state} method, which updates the state of the client and print the steps performed.\\ In both the \textbf{uring\_nbs} and \textbf{uring\_bs} files, the action passed to the \textbf{message\_t} was passed as a char value (even though the buf array was an array of \textbf{uint8\_t}). \\However the \textbf{message\_t} struct, defines the actions has an array of \textbf{uint8\_t}.\\ Therefore, when i was passing the action to the       \textbf{compute\_state} method, the \textbf{isValidAction()} always returned false value, given that the action value was translated in a value outside the allowed range (1..4).\\ Therefore i didn't receive any answer when sending requests to the server. \\To solve the issue, i needed to define a char variable having as value the action passed in the \textbf{compute\_state()} method, and passing this variable in the \textbf{isValidAction()} call.
+    \item The \textbf{state.c} file contains the \textbf{compute\_state} method, which updates the state of the client and print the steps performed.\\ In both the \textbf{uring\_nbs} and \textbf{uring\_bs} files, i was initially passing the action to the \textbf{message\_t} as a char value. \\ However the \textbf{message\_t} struct, defines the actions has an array of \textbf{uint8\_t}.\\ Therefore, when i was passing the action to the \textbf{compute\_state} method, the \textbf{isValidAction()} always returned false value, given that the action value was translated in a value outside the allowed range (1..4).\\ Therefore i didn't receive any answer when sending requests to the server. \\ I finally noticed the type of the \textbf{actions} array, therefore i changed the array buf to be of type \textbf{uint8\_t}.
     \item In the benchmark, when using the \textbf{pthread\_create} to instantiate the threads, when using a certain amount of clients, the results computed after the for loop were clearly wrong, with the number of requests and responses being close to 0. \\ I came up with the conclusion that the code for displaying the results, was executed before the threads could correctly finish. \\ Adding a \textbf{sleep()} operation immediately after the for loop solved the issue.
     
 \end{itemize}
