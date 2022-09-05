@@ -37,7 +37,7 @@ Even though the purpose of the project is to implement the server only using the
 #### Simple Usage
 
 To play with the servers implemented, first is necessary to open a terminal.
-From here, starting from the root directory of the project, is required to move inside the `src/server` dir.
+From here, starting from the root directory of the project, is required to move inside the `src/servers` dir.
 Here are located the files containing the code of the different servers.
 Now, to run a specific implementation of the finite state machine, execute the following instructions contained in the makefile.
 
@@ -66,7 +66,13 @@ Finally, test the server, executing the benchmark with the following:
 
 - `./benchmark <number_of_clients> <duration_of_the_interaction_in_seconds>`
 
-The results of the testing are written in the stdout.
+The results of the testing are written in the stdout.ù
+
+### Integration with AOS-playground
+
+In the `no_benchmark` folder, the two models are implemented in order to be fully compatible with the AOS-playground code.
+The models doesn't send back any ack to the client after having received and processed the new action to perform on the fsm.
+
 
 ## Development Environment
 
