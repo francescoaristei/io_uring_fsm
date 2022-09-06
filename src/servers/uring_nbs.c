@@ -212,7 +212,6 @@ void add_socket_update(struct io_uring *ring, int fd, int message_size, unsigned
 
     char buf[1] = "";
     io_uring_prep_send(sqe, fd, &buf,1 , 0);
-    //io_uring_prep_send(sqe, fd, &bufs[fd], 1, 0);
     io_uring_sqe_set_flags(sqe, flags);
 
     conn_info *conn_i = &conns[fd];
