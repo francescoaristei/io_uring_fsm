@@ -1,3 +1,22 @@
+\documentclass[10pt, oneside,english]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper}                   		% ... or a4paper or a5paper or ... 
+\usepackage[english]{babel}
+\selectlanguage{english}
+\usepackage[utf8]{inputenc}
+\usepackage[font=small,hang]{caption}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+\usepackage[table,xcdraw]{xcolor}
+%\geometry{landscape}                		% Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+\usepackage{authblk}
+\usepackage{float}
+
+\usepackage{listings} % for python code
 
 \usepackage{tcolorbox}
 \tcbuselibrary{minted,breakable,xparse,skins}
@@ -177,8 +196,8 @@ The main method in charge of handling clients requests are the following:
 
 In order to improve the performance, the  \textbf{IORING\_FEAT\_FAST\_POLL} has been used. \\
 It allows to avoid polling a socket for ready data.  \\
-In this way the program can just call a recv (io\_uring\_prep\_recv) on a socket and at the moment there’s data ready it will complete and return as a cqe on your ring.  \\
-Because it doesn’t have to poll, it save a system call. \\
+In this way the program can just call a recv (\textbf{io\_uring\_prep\_recv}) on a socket and at the moment there’s data ready it will complete and return as a cqe on your ring.  \\
+Because it doesn’t have to poll, it saves a system call. \\
 Finally, the server has been developed in two different versions, with and without the buffer selection feature. \\
 
 \subsubsection{Buffer Selection}
@@ -281,7 +300,8 @@ I have encountered several problems during the development process. \\
 Generally speaking the main difficulty has been in trying to understand how liburing could be used. \\
 Even though the architecture of io\_uring seems pretty straightforward on paper, the application gave me problems.\\ 
 Mainly because working with an asynchronous programming paradigm requires to think about the functioning of the program in an asynchronous manner, which is not something i was used to. \\
-Often after having submitted requests in the submission ring i expected to receive the responses from the kernel in the completion ring but i ended up having a different behavior.
+Often after having submitted requests in the submission ring i expected to receive the responses from the kernel in the completion ring but i ended up having a different behavior. \\
+Following some issues i have encountered during the development.
 
 \begin{itemize}
     \item In the \textbf{add\_socket\_update} in order to update the state of the client the \textbf{message\_t} struct needs to be filled with the content of the client action, which is then passed in the \textbf{compute\_state} to update the state. \\I had several problems figuring out the correct way to copy the content in the buffer where io\_uring put the data (buf[bid]) in the \textbf{msg.actions} array.\\ I tried several options but i ended up always with segmentation fault. A simple \textbf{memcpy} solved the problem.
