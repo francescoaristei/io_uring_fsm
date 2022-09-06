@@ -20,7 +20,7 @@ Any web application parses actions from the client to change its own state.
 
 ## io_uring
 
-`io_uring` is a **Linux kernel** interface to efficiently allow to send and receive data asynchronously. 
+`io_uring` is a **Linux kernel** interface that efficiently allow to send and receive data asynchronously. 
 It was originally designed to target block devices and files but has since gained the ability to work with things like network sockets, like in our case.
 
 ## Project Report
