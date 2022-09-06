@@ -66,7 +66,7 @@ Finally, test the server, executing the benchmark with the following:
 
 - `./benchmark <number_of_clients> <duration_of_the_interaction_in_seconds>`
 
-The results of the testing are written in the stdout.ù
+The results of the testing are written in the stdout.
 
 ### Integration with AOS-playground
 
