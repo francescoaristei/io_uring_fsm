@@ -6,7 +6,7 @@ The module is the final result of **Advanced Operating Systems** course held in 
 - Course head professor: Vittorio Zaccaria
 - Student developer: Francesco Aristei
 
-Specifically, it consists in developing the FSM server implemented in the [aos_playground repository](https://github.com/vzaccaria/aos-playground/tree/master/code/th-c-async), using the `io_uring` inteface.
+Specifically, it consists in developing the FSM server implemented in the AOS playground repository of the Advanced Operating Systems course, using the `io_uring` inteface.
 The performances of the server are then evaluated against the other concurrency models already provided.
 
 ## Finite State Machine
