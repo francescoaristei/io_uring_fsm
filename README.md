@@ -32,7 +32,7 @@ There is a thorough high-level description of the code.
 
 ### Usage
 
-Even though the purpose of the project is to implement the server only using the io_uring interface, all the servers already present in the [aos_playground repository](https://github.com/vzaccaria/aos-playground/tree/master/code/th-c-async), have been used in this repository, in order to implement the performance benchmarking.
+Even though the purpose of the project is to implement the server only using the io_uring interface, all the servers already present in theaos playground repository, have been used in this repository, in order to implement the performance benchmarking.
 
 #### Simple Usage
 
